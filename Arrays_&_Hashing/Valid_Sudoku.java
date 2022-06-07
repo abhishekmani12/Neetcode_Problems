@@ -40,3 +40,65 @@ class Solution {
         return true;
     }
 }
+
+//FAST SOLUTION: (with no hardcoding)
+
+class Solution {
+    
+    private boolean hasDuplicate(char[][] board, int startRow, int endRow, int startCol, int endCol) 
+    {
+        boolean[] isPresent = new boolean[10];
+        
+        for (int i = startRow; i < endRow; i++) 
+        {
+            for (int j = startCol; j < endCol; j++) 
+            {
+                if (board[i][j] == '.') continue;
+                
+                if(isPresent[board[i][j] - '0']) return true;
+                
+                isPresent[board[i][j] - '0'] = true;
+            }
+        }
+        
+        return false;
+    }
+    
+    
+    
+    public boolean isValidSudoku(char[][] board) 
+    {
+        // check row
+        for (int i = 0; i < board.length; i++)
+        {
+            
+            if(hasDuplicate(board, i, i + 1, 0, board.length)) return false;
+        }
+        
+        
+        // check col
+        for (int j = 0; j < board.length; j++) 
+        {
+            
+            if(hasDuplicate(board, 0, board.length, j, j + 1)) return false;
+        }
+        
+        // check small square region
+        
+        int regionSize = (int)Math.sqrt(board.length);
+        
+        for (int i = 0; i < regionSize; i++) 
+        {
+            for (int j = 0; j < regionSize; j++) 
+            {
+                
+                if(hasDuplicate(board, i * regionSize, (i + 1) * regionSize, j * regionSize, (j + 1) * regionSize)) return false;
+            }
+        }
+        
+        return true;
+    }
+    
+    
+}
+
