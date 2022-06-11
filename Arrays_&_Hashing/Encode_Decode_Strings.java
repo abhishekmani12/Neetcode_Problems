@@ -11,7 +11,7 @@ public class Solution {
 
         for(String i: strs)
         {
-            encoded.append(i.length+"#"+i); ///delimiter is a character which separates the words--"#" is used here to distinguish the number infront and the word behind
+            encoded.append(i.length+"#"+i); //delimiter is a character which separates the words--"#" is used here to distinguish the number infront and the word behind
         }
 
         return encoded.toString();
@@ -49,7 +49,7 @@ public class Solution {
 
             decoded.add(word);
 
-            i=i+wordlength-1; //Starting index for thre next word
+            i=i+wordlength-1; //Starting index for the next word
         }
 
         return decoded;
