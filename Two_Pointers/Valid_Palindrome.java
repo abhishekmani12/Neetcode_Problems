@@ -1,3 +1,5 @@
+// This soln does not use two pointers
+
 //ignore cases, consider only alphanumeric characters (A-Z,0-9)
 
 class Solution {
